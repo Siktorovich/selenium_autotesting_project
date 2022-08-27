@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
+import pytest
 
 
 class ProductPage(BasePage):
@@ -14,7 +15,6 @@ class ProductPage(BasePage):
         button = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON)
         button.click()
 
-
     def valid_messages_after_add_product_to_basket(self, *args, **kwargs):
         message_price = self.browser.find_element(*ProductPageLocators.MESSAGE_PRICE).text
         message_title = self.browser.find_element(*ProductPageLocators.MESSAGE_TITLE).text
@@ -27,7 +27,10 @@ class ProductPage(BasePage):
         except:
             return False
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCEED_MESSAGE), \
+            "Success message is presented, but should not be"
 
-
-
-
+    def should_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCEED_MESSAGE), \
+            "Success message is not disappeared"

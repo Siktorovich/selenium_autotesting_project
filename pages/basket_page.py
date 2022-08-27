@@ -14,3 +14,11 @@ class BasketPage(BasePage):
                 return False
         except:
             return False
+
+    def should_not_be_items(self):
+        assert self.is_not_element_present(*BasketPageLocators.BASKET_ITEMS), \
+            "Items in basket is presented, but should not be"
+
+    def should_be_empty_text(self):
+        assert self.is_element_present(*BasketPageLocators.BASKET_EMPTY_TEXT), \
+            "Empty text is not presented, but should be"

@@ -3,12 +3,14 @@ from selenium.webdriver.common.by import By
 
 class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    BASKET_LINK = (By.PARTIAL_LINK_TEXT, 'basket')
 
 
 class BasketPageLocators():
     BASKET_TITLE = (By.CSS_SELECTOR, 'div.basket-items h3 > a')
     BASKET_PRICE = (By.CSS_SELECTOR, 'p.price_color')
-    BASKET_LINK_PAGE = 'http://selenium1py.pythonanywhere.com/basket/'
+    BASKET_ITEMS = (By.CSS_SELECTOR, 'div.basket-items')
+    BASKET_EMPTY_TEXT = (By.XPATH, '//p[contains(text(),"empty")]')
 
 
 class LoginPageLocators():
@@ -17,7 +19,7 @@ class LoginPageLocators():
 
 
 class MainPageLocators():
-    LOGIN_LINK = (By.CSS_SELECTOR, '#login_link')
+    pass
 
 
 class ProductPageLocators():
